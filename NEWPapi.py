@@ -48,24 +48,20 @@ Zakelijk1 = 'Zakelijk'
 A = "Bakje"
 B = "Horrentje"
 def stap1():
-    print("Wilt u een zakelijke aankoop of Particuliere aankoop doen? Z/P")
-    groep = input()
-    if groep == "P" or "p":
-        groep = Particulier
-        print("U bent particulier u word verzonden...")
+    print("Wilt u een zakelijke aankoop of Particuliere aankoop doen?")
+    Doelgroep = input()
+    if Doelgroep == "p" or "p":
+        print("U word verzonden naar uw aankoop..")
         time.sleep(2)
-    elif groep == "Z" or "z":
-        groep = Zakelijk1
-        print("U word verzonden naar uw zakelijke aankoop")
-        print("Hoeveel liter wilt u?")
-        Liter = int(input())
-        if Liter >= 1:
-            print("Goedgekeurd.")
-        else:
-            print("Te weinig liter")
+        Doelgroep = Particulier
+    elif Doelgroep == "Z" or "z":
+        print("Hoeveel liter wilt u bestellen?")
+        Liter = input()
+        print("Gelukt, dat word bij uw bestelling er bij gerekend!")
+        Doelgroep = Zakelijk1
     else:
         print("U moet wel iets invullen")
-        time.sleep(2) 
+        stap1()
     print("Welke smaak wilt u? (Vanilla), (Chocolade), (Aardbij), (Mint)")
     Smaak = input()
     if Smaak == "Chocolade" or "Vanilla" or "Aardbij" or "Mint":
@@ -87,11 +83,10 @@ def stap1():
         if Bolletjes <= 3:
             print('Wilt u ' + str(Bolletjes) + (' Bolletje: een hoorntje of een bakje?'))
             vraag = input()
-            if vraag == "Hoorntje" or "Bakje":
+            if vraag == "Hoorntje" or "Bakje" or "hoorntje" or "bakje":
                 def menu():
                     print('------["Papi Geleto"]-------')
                     print('Doelgroep: ' + Zakelijk1 or Particulier)
-                    print('Liter (Z): ' + str(Liter))
                     print('Smaak: ' + Smaak)
                     print('Bolletjes: ' + str(Bolletjes) + ' =  €' + str(Bollen))
                     print('Topping: ' + str(Topping))
@@ -115,7 +110,6 @@ def stap1():
             time.sleep(2)
             print('------["Papi Geleto"]-------')
             print('Doelgroep: ' + Zakelijk1 or Particulier)
-            print('Liters (Z): ' + str(Liter))
             print('Smaak: ' + Smaak)
             print('Bolletjes: ' + str(Bolletjes) + ' =  €' + str(Bollen))
             print('Topping: ' + str(Topping))
