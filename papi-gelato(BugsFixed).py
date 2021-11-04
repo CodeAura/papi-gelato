@@ -26,10 +26,10 @@ print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 print("+             - Welkom bij Papi Gelato. -                   +")
 print("+                 Waar ijs lekker is.                       +")
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-time.sleep(2)
+time.sleep(2) 
 
 #Prijzen
-Bollen = float(1.10)
+Bollen = float(0.95)
 Hoorentje = float(1.25)
 Bakje = float(0.75)
 
@@ -47,24 +47,26 @@ Zakelijk1 = 'Zakelijk'
 #Type ijs
 A = "Bakje"
 B = "Horrentje"
-def stap1():
-    print("Wilt u een zakelijke aankoop of Particuliere aankoop doen?")
+
+def vraag0():
+    print("Wilt u een Zakelijke aankoop of Particuliere aankoop doen?")
     Doelgroep = input()
-    if Doelgroep == "p" or "p":
+    if Doelgroep == "Particulier" or "particulier":
         print("U word verzonden naar uw aankoop..")
         time.sleep(2)
         Doelgroep = Particulier
-    elif Doelgroep == "Z" or "z":
-        print("Hoeveel liter wilt u bestellen?")
-        Liter = input()
-        print("Gelukt, dat word bij uw bestelling er bij gerekend!")
+    elif Doelgroep == "Zakelijk" or "zakelijk":
         Doelgroep = Zakelijk1
+        print("Hoeveel liter wilt u?")
+        Liter = int(input())
+        print("Aantal liters worden er bij gerekend bij uw aankoop.")
     else:
         print("U moet wel iets invullen")
-        stap1()
-    print("Welke smaak wilt u? (Vanilla), (Chocolade), (Aardbij), (Mint)")
+vraag0()
+def stap1():
+    print("Welke smaak wilt u? (Vanilla), (Chocolade), (Aardbij), (Mint: Uitverkocht)")
     Smaak = input()
-    if Smaak == "Chocolade" or "Vanilla" or "Aardbij" or "Mint":
+    if Smaak == "Chocolade" or "Vanilla" or "Aardbij":
         print("Topping: (Geen) | (Slagroom) | (Sprinkles) | (CaramelSaus) ")
         Topping = input()
         if Topping == "Slagroom":
@@ -76,7 +78,7 @@ def stap1():
         elif Topping == "CaramelSaus":
             Topping = CaramelSaus
         else:
-            print("U moet wel iets kiezen")
+            print("Dat is geen optie die we aanbieden...")
             stap1()
         print("Hoeveel bolletjes wilt u?")
         Bolletjes = int(input())
@@ -93,7 +95,7 @@ def stap1():
                     print('Op-eetkeus: ' + vraag)
                     print('----------------------------')
                     time.sleep(1)
-                    print('Te betalen:  €' + str(Bollen * Bolletjes + Topping))
+                    print('Te betalen (Incl BTW): €' + str(Bollen * Bolletjes + Topping / 100 * 121))
                     time.sleep(5)
                     print("Nog anders iets bestellen?")
                     bestellen = input()
@@ -102,7 +104,7 @@ def stap1():
                     elif bestellen == "Nee":
                         print("Bedankt en tot ziens")
                     else:
-                        print("Sorry, dat snap ik niet...")
+                        print("Sorry dat is geen optie die we aanbieden...")
                         stap1()
                 menu()
         elif Bolletjes <= 7:
@@ -116,7 +118,7 @@ def stap1():
             print('Op-eetkeus: Bakje')
             print('----------------------------')
             time.sleep(1)
-            print('Te betalen:  €' + str(Bollen * Bolletjes + Topping))
+            print('Te betalen (Incl BTW): €' + str(Bollen * Bolletjes + Topping / 100 * 106))
             time.sleep(5)
             print("Nog anders iets bestellen?")
             bestellen = input()
@@ -125,7 +127,7 @@ def stap1():
             elif bestellen == "Nee":
                 print("Bedankt en tot ziens")
             else:
-                print("Sorry, dat snap ik niet...")
+                print("Sorry dat is geen optie die we aanbieden...")
                 stap1()
         elif Bolletjes >= 8:
             print("Zulke grote bakken hebben wij niet.")
